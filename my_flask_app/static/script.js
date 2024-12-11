@@ -1,15 +1,11 @@
-let clickCount = {{ click_count }};
+const CLASSNAME = "-visible";
+const TIMEOUT = 2000;
+const $target = $(".bg");
 
-document.getElementById('clickButton').addEventListener('click', function() {
-    clickCount++;
-    document.getElementById('countDisplay').innerText = clickCount;
+setInterval(() => {
+  $target.addClass(CLASSNAME);
 
-    // サーバーにカウントを送信
-    fetch('/increment', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ count: clickCount })
-    });
-});
+  setTimeout(() => {
+    $target.removeClass(CLASSNAME);
+  }, TIMEOUT);
+}, TIMEOUT*2);
